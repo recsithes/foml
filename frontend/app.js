@@ -1,4 +1,8 @@
-const API_URL = 'http://127.0.0.1:8000/correct';
+const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '';
+// In production on Render, you inject your backend web service URL here.
+const API_URL = IS_LOCAL 
+    ? 'http://127.0.0.1:8000/correct' 
+    : 'https://smartspell-backend.onrender.com/correct';
 
 const editor = document.getElementById('editor');
 const wordCount = document.getElementById('word-count');

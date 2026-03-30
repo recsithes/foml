@@ -1,0 +1,17 @@
+services:
+  # The Python Backend Core
+  - type: web
+    name: smartspell-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # The Beautiful Frontend UI
+  - type: web
+    name: smartspell-frontend
+    env: static
+    buildCommand: "" # No build required for Vanilla JS
+    staticPublishPath: ./frontend
