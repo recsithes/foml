@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSpell | AI Autocorrect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>SmartSpell ✨</h1>
+            <p>Perfect and accurate autocorrection powered by probability models.</p>
+        </header>
+
+        <main>
+            <div class="editor-section">
+                <textarea id="editor" placeholder="Start typing your text here to see real-time corrections..."></textarea>
+                <div class="editor-footer">
+                    <span id="word-count">0 words</span>
+                    <span id="status-indicator">All good</span>
+                </div>
+            </div>
+
+            <aside class="issues-panel">
+                <div class="panel-header">
+                    <h2>Suggestions</h2>
+                    <span id="issue-count" class="badge">0</span>
+                </div>
+                <div id="issues-list" class="issues-list">
+                    <!-- Issues will be injected here via JS -->
+                    <div class="empty-state">
+                        Start typing! Your document looks solid right now.
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
