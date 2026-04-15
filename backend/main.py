@@ -1,7 +1,8 @@
 import re
 import os
 from collections import Counter
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -98,6 +99,9 @@ def correct_word(req: CorrectionRequest):
         "suggestions": suggestions
     }
 
-@app.get("/health")
-def health_check():
-    return {"status": "ok", "vocab_size": len(vocab)}
+@app.api_route("/health", methods=["GET", "HEAD"])
+def health_check(request: Request):
+    if request.method == "HEAD":
+        return Response(status_code=200)
+
+    return JSONResponse({"status": "ok", "vocab_size": len(vocab)})
