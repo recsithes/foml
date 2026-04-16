@@ -121,16 +121,23 @@ function renderIssues(issues) {
         issueEl.appendChild(header);
         
         const topSuggestions = issue.suggestions.slice(0, 3);
+        const totalTopProbability = topSuggestions.reduce((sum, sug) => {
+            const value = Number(sug.probability);
+            return Number.isFinite(value) && value > 0 ? sum + value : sum;
+        }, 0);
         
         topSuggestions.forEach(sug => {
             const btn = document.createElement('button');
             btn.className = 'suggestion-btn';
             
-            const probStr = parseFloat(sug.probability).toExponential(2);
+            const probability = Number(sug.probability);
+            const confidencePercent = totalTopProbability > 0 && Number.isFinite(probability) && probability > 0
+                ? ((probability / totalTopProbability) * 100).toFixed(1) + '%'
+                : 'N/A';
             
             btn.innerHTML = `
                 <span class="suggestion-word">${sug.word}</span>
-                <span class="suggestion-prob">Confidence: ${probStr}</span>
+                <span class="suggestion-prob">Confidence: ${confidencePercent}</span>
             `;
             
             btn.onclick = () => fixWord(issue.original, sug.word);
