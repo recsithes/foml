@@ -234,6 +234,82 @@ textarea::placeholder {
     color: var(--text-secondary);
 }
 
+/* Responsive */
+@media (max-width: 900px) {
+    body {
+        align-items: flex-start;
+        padding: 1.25rem;
+    }
+
+    .app-container {
+        height: auto;
+        min-height: calc(100vh - 2.5rem);
+        gap: 1.25rem;
+    }
+
+    header h1 {
+        font-size: 2.25rem;
+    }
+
+    main {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .editor-section,
+    .issues-panel {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0.75rem;
+    }
+
+    .app-container {
+        min-height: calc(100vh - 1.5rem);
+        gap: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    textarea {
+        padding: 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .editor-footer {
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .panel-header {
+        padding: 1rem;
+    }
+
+    .panel-header h2 {
+        font-size: 1rem;
+    }
+
+    .issues-list {
+        padding: 0.75rem;
+    }
+
+    .issue-card {
+        padding: 0.9rem;
+    }
+}
+
 /* Animations */
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
