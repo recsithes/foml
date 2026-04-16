@@ -131,7 +131,7 @@ function renderIssues(issues) {
             btn.className = 'suggestion-btn';
             
             const probability = Number(sug.probability);
-            const confidencePercent = totalTopProbability > 0 && Number.isFinite(probability)
+            const confidencePercent = totalTopProbability > 0 && Number.isFinite(probability) && probability > 0
                 ? ((probability / totalTopProbability) * 100).toFixed(1) + '%'
                 : 'N/A';
             
